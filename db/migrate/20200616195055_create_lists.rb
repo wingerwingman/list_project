@@ -1,9 +1,10 @@
 class CreateLists < ActiveRecord::Migration[6.0]
   def change
     create_table :lists do |t|
-      t.integer :item_id 
-      t.integer :catagory_id 
+      t.string :name
+      t.integer :category_id 
       t.integer :user_id 
+      t.string :description 
 
       t.timestamps
     end
