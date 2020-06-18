@@ -1,22 +1,35 @@
 class ListsController < ApplicationController
 
     def index 
-        @lists = List.all 
+        @user = current_user
+        @lists = @user.lists.all
     end
 
     def new
-        binding.pry
-        @list = List.new
+        @list = current_user.lists.build
     end
 
     def create 
-
+        
+        @list = current_user.lists.build(list_params)
+        if @list.save 
+            redirect_to list_path(@list)
+        else
+            render 'new', :alert => "Please Fill In All The Forms"
+        end
     end
 
+    def show 
+        @list = List.find_by(params[:id])
+        # binding.pry
+        @item = @list.items.create(description: :description, checked_off: :checked_off)
+    end
 
     private 
 
     def list_params 
-        parms.require(:user_id, :name, :category_id, :description)
+        params.require(:list).permit(:user_id, :name, :category_id, :description, category_attributes: [
+            :name])
     end
+    
 end
