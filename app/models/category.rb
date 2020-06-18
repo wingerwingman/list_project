@@ -1,4 +1,8 @@
 class Category < ApplicationRecord
     has_many :lists
-    has_many :users, thorugh: :lists  
+    has_many :users, through: :lists  
+    validates :name, presence: true
+
+
+    
 end

@@ -1,4 +1,12 @@
 <h1>Lists<h2>
-<%= @lists do |list| %>
-    <%= list.name %>
+<table>
+
+<% @lists.each do |l| %>
+    <tr>
+    <p>
+    <%= link_to "#{l.name}", list_path(l) %></br> 
+    Description: <%= l.description %>
+    </p>
+    </tr>
+</table>
 <% end %>

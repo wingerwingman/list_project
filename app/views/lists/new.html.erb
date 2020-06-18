@@ -1,25 +1,25 @@
-<h1>Create List</h1>
+<h1>Create A List</h1>
+<%= form_for @list do |f| %>
 
-<%= form_for @lists do |f| %>
-    <p>
-    <%= f.label :user_id %><br>
-    <%= f.text_field @user.id %>
-    </p>
 
     <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
     </p>
-    <p>
-    <%= f.label :category %><br>
-    <%= f.text_field :category %>
-    </p>
-    <p>
+    <P>
     <%= f.label :description %><br>
     <%= f.text_field :description %>
     </p>
-<p>
-  <%= f.submit %>
-</p>
+    <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
+    <%= f.fields_for :category, @list.build_category do |cat| %>
+        <p>
+        <%= cat.label :name %>
+        <%= cat.text_field :name%>
+        </p>
+    <% end %>
+
+    <p>
+    <%= f.submit %>
+    </p>
 
 <% end %>

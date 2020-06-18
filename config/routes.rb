@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     get 'signup', to: 'devise/registrations#new'
   end
   root 'welcome#home'
-  resources :lists
+  resources :lists do 
+    resources :categories do
+    end
+  end
+  resources :items
   
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
