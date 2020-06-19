@@ -1,17 +1,16 @@
 class CatagoriesController < ApplicationController
 
     def new 
-        @catagory = Catagory.new
+        @catagory = Catagory.build
     end
 
     def create 
-        @category = Category.new(category_params)
+        @category = Category.build(category_params)
     end
 
     private
 
     def catagory_params
-        # params[:category][:list_attributes].delete(:__template_row__)
         params.require(:category).permit(:name)
     end
 end

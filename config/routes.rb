@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   end
   root 'welcome#home'
   resources :lists do 
-    resources :categories do
-    end
+    resources :categories 
+    resources :items
   end
   resources :items
+  resources :list_items
   
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

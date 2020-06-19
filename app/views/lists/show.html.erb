@@ -2,21 +2,9 @@
 <h2><%= @list.description %></h2>
 
 
-<% @list.items.each do |i| %>
+<% @items.each do |i| %>
     <h3><%= i.description %></h3>
 <% end %>
 
-<h3>Add Item</h3>
-<% form_for @item do |f| %>
-    <p>
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-    <%= f.label :checked_off do %>
-    <%= f.check_box :checked_off %>
-    <% end %>
-    </p>
-<p>
-<%= f.submit %>
-</p>
+<%= link_to 'New Item',  new_list_item_path(@list) %>
 
-<% end %>
