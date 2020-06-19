@@ -10,7 +10,6 @@ class ListsController < ApplicationController
     end
 
     def create 
-        
         @list = current_user.lists.build(list_params)
         if @list.save 
             redirect_to list_path(@list)
@@ -20,16 +19,22 @@ class ListsController < ApplicationController
     end
 
     def show 
-        @list = List.find_by(params[:id])
+        @list = current_user.lists.find_by(params[:id])
+        binding.pry
+        @items = Item.joins(lists: params[:id])
+        # @items = Item.find_by(list_id: params[:list_id])
         # binding.pry
-        @item = @list.items.create(description: :description, checked_off: :checked_off)
+        # @list_items = @list.list_items.find_by(params[:list_id])
+        # binding.pry
+        # @items = Item.list_id.find_by(@list_items)
     end
 
     private 
 
     def list_params 
         params.require(:list).permit(:user_id, :name, :category_id, :description, category_attributes: [
-            :name])
+            :name
+        ])
     end
-    
+
 end
