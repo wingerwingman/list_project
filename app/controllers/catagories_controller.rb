@@ -5,7 +5,16 @@ class CatagoriesController < ApplicationController
     end
 
     def create 
-        @category = Category.build(category_params)
+        @category = Category.find_or_create_by(name: name)
+    end
+
+    def edit 
+        @category = Category.find_by(params[:id])
+    end
+
+    def update 
+        @category = Category.find_by(params[:id])
+        @category.update(category_params)
     end
 
     private
