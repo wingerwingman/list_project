@@ -7,11 +7,25 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
-
+  <% if user_signed_in? %>
     <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand" href="/">List Builder</a>
+      <form class="form-inline">
+        <a class="btn btn-outline-primary" href="\lists" role="button">
+        Lists
+        </a>
+        <div style="padding-left: 10px;">
+        <a class="btn btn-outline-success" role="button"<%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+        </a>
+        </div>
+      </form>
+    </nav>
+    <% else %>
+      <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand" href="/">List Builder</a>
       <form class="form-inline">
         <a class="btn btn-outline-primary" href="\users\sign_in" role="button">
@@ -28,6 +42,7 @@
         </div>
       </form>
     </nav>
+    <% end %>
 
 
     <%= yield %>

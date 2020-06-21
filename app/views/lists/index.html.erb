@@ -1,12 +1,14 @@
 <h1>Lists<h2>
 <table>
-
+<p><%= link_to "New List", new_list_path %></p>
 <% @lists.each do |l| %>
     <tr>
     <p>
-    <%= link_to "#{l.name}", list_path(l) %></br> 
+    <%= link_to "#{l.name}", list_path(l) %>
+    </br> 
     Description: <%= l.description %>
-    </p>
+    <%= link_to "Delete List", l, method: :delete %>
+    </p><br><br>
     </tr>
 </table>
 <% end %>

@@ -1,25 +1,2 @@
 <h1>Create A List</h1>
-<%= form_for @list do |f| %>
-
-
-    <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-    </p>
-    <P>
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-    </p>
-    <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
-    <%= f.fields_for :category, @list.build_category do |cat| %>
-        <p>
-        <%= cat.label :name %>
-        <%= cat.text_field :name%>
-        </p>
-    <% end %>
-
-    <p>
-    <%= f.submit %>
-    </p>
-
-<% end %>
+<%= render partial: 'form', locals: {user: @list} %>

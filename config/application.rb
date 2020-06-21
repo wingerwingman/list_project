@@ -10,6 +10,8 @@ Bundler.require(*Rails.groups)
 module ListProject
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    # config.middleware.use ActionDispatch::Cookies
+    # config.middleware.use ActionDispatch::Session::CookieStore
     config.load_defaults 6.0
     config.middleware.insert_before 0, Rack::Cors do
       allow do

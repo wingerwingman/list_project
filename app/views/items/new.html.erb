@@ -1,10 +1,15 @@
 <h3>Add Item</h3>
+<% if !@item.errors.messages.empty? %>
+    <div id="error_explanation">
+        <% @item.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end%>
+    </div>
+<% end %>
 <%= form_for @item do |f| %>
     <p>
     <%= f.label :description %><br>
     <%= f.text_field :description %>
-    <%= f.label :checked_off %>
-    <%= f.check_box :checked_off %>
     </p>
 <p>
 <%= f.submit %>
