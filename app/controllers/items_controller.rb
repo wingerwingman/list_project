@@ -8,14 +8,16 @@ class ItemsController < ApplicationController
     def create 
         @item = Item.find_or_create_by(item_params)
         if  @item.save
-            redirect_to lists_path(@list)
+            redirect_to list_path(@list)
         else 
-            render new_list_item_path(@list)
+            render edit_list_item_path(@list)
         end
     end
 
-    def show
-        binding.pry
+    def destroy
+        @item = Item.find_by(id: params[:id])
+        @item.destroy
+        redirect_to lists_path(@list)
     end
 
     private 

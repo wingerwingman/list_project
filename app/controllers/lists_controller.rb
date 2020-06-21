@@ -14,11 +14,12 @@ class ListsController < ApplicationController
     end
 
     def new
-        @list = current_user.lists.build
+        @list = current_user.lists.items.build
     end
 
     def create 
-        @list = current_user.lists.build(list_params)
+        binding.pry
+        @list = current_user.lists.items.build(list_params)
         if @list.save
             redirect_to list_path(@list)
         else
@@ -34,20 +35,13 @@ class ListsController < ApplicationController
         @list = current_user.lists.find_by(params[:id])
         @list.update(list_params)
         redirect_to list_path
-        binding.pry
-        
-        # if @list
-        #     redirect_to list_path(@list)
-        # else
-        #     render 'new', :alert => "Please Fill In All The Forms"
-        # end
     end
 
     def show 
 
-             @list = current_user.lists.find_by(params[:id])
+        @list = current_user.lists.find_by(params[:id])
 
-        # binding.pry
+        binding.pry
         # @items = Item.joins(lists: params[:id])
         # @items = Item.find_by(list_id: params[:list_id])
         # binding.pry
