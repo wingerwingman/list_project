@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     resources :categories, only: [:new, :update,]
     resources :items, only: [:new, :show, :edit, :update, :destroy]
   end
-  resources :items, only: [:index, :new, :show, :edit, :update, :destroy]
+  resources :list, only: [:new, :show, :edit, :update, :destroy]
+  resources :items, only: [:new, :show, :edit, :update, :destroy]
   resources :list_items, only: [:index, :new, :show, :edit, :update, :destroy]
   
 
