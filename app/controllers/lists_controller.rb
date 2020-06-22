@@ -21,7 +21,6 @@ class ListsController < ApplicationController
     end
 
     def create 
-        # binding.pry
         @list = current_user.lists.build(list_params)
         if @list.save
             redirect_to list_path(@list)
@@ -32,7 +31,6 @@ class ListsController < ApplicationController
 
     def edit 
         @list = current_user.lists.find_by(id: params[:id])
-        # binding.pry
     end
 
     def update 
@@ -47,7 +45,6 @@ class ListsController < ApplicationController
     def show 
         @list = current_user.lists.find_by_id(params[:id])
         @items = @list.items
-        # binding.pry
     end
 
     def destroy
