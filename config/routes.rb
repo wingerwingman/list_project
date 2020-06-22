@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   resources :lists, only: [:show, :index, :edit, :update, :destroy, :new]
   resources :lists do 
     resources :categories, only: [:new, :update,]
-    resources :items
+    resources :items, only: [:show, :new, :edit, :update, :destroy, :patch, :post, :create]
   end
   resources :list, only: [:new, :show, :edit, :update, :destroy]
-  resources :items
+  resources :items, only: [:show, :new, :edit, :update, :destroy, :patch, :post]
 
 
   
