@@ -31,14 +31,16 @@ class ListsController < ApplicationController
     end
 
     def edit 
-        @list = current_user.lists.find_by(params[:id])
+        @list = current_user.lists.find_by(id: params[:id])
+        # binding.pry
     end
 
     def update 
         # binding.pry
-        @list = current_user.lists.find_by(params[:id])
+        @list = current_user.lists.find_by(id: params[:id])
         # @category = @list.category.id
         if @list.update(list_params)
+            # binding.pry
             redirect_to list_path(@list)
         else 
             render 'edit'
