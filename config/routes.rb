@@ -8,11 +8,12 @@ Rails.application.routes.draw do
   resources :lists, only: [:show, :index, :edit, :update, :destroy, :new]
   resources :lists do 
     resources :categories, only: [:new, :update,]
-    resources :items, only: [:new, :show, :edit, :update, :destroy]
+    resources :items
   end
   resources :list, only: [:new, :show, :edit, :update, :destroy]
-  resources :items, only: [:new, :show, :edit, :update, :destroy]
+  resources :items
   resources :list_items, only: [:index, :new, :show, :edit, :update, :destroy]
+
   
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

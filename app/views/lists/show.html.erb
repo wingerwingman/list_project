@@ -3,11 +3,18 @@
 <%= @list.description %>
 <br>
 
-<% if false %>
+<p>
+
+
 <% @items.each do |i| %>
     <h3><%= i.description %></h3>
+    <%= link_to "Delete", i, method: :delete %>
 <% end %>
-<% end %>
+</p>
+
+
+
+
 
 <%= link_to 'New Item',  new_list_item_path(@list) %><br>
 <%= link_to 'Edit List',  edit_list_path(@list) %>

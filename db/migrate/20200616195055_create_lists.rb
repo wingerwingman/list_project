@@ -5,6 +5,7 @@ class CreateLists < ActiveRecord::Migration[6.0]
       t.integer :category_id 
       t.integer :user_id 
       t.string :description 
+      t.integer :item_id
 
       t.timestamps
     end

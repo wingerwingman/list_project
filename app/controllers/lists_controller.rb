@@ -1,25 +1,28 @@
 class ListsController < ApplicationController
-    before_action :require_permission, only: :show
+    before_action :require_permission, only: :show 
 
     def require_permission
         if current_user != List.find(params[:id]).user
             redirect_to lists_path
         end
+        rescue ActiveRecord::RecordNotFound
+        redirect_to root_url, :flash => { :error => "Record not found." }
     end
 
 
     def index 
         @user = current_user
         @lists = @user.lists.all
+        @long_list = Item.long_items
     end
 
     def new
-        @list = current_user.lists.items.build
+        @list = current_user.lists.build
     end
 
     def create 
-        binding.pry
-        @list = current_user.lists.items.build(list_params)
+        # binding.pry
+        @list = current_user.lists.build(list_params)
         if @list.save
             redirect_to list_path(@list)
         else
@@ -32,22 +35,20 @@ class ListsController < ApplicationController
     end
 
     def update 
+        # binding.pry
         @list = current_user.lists.find_by(params[:id])
-        @list.update(list_params)
-        redirect_to list_path
+        # @category = @list.category.id
+        if @list.update(list_params)
+            redirect_to list_path(@list)
+        else 
+            render 'edit'
+        end
     end
 
     def show 
-
-        @list = current_user.lists.find_by(params[:id])
-
-        binding.pry
-        # @items = Item.joins(lists: params[:id])
-        # @items = Item.find_by(list_id: params[:list_id])
+        @list = current_user.lists.find_by_id(params[:id])
+        @items = @list.items
         # binding.pry
-        # @list_items = @list.list_items.find_by(params[:list_id])
-        # binding.pry
-        # @items = Item.list_id.find_by(@list_items)
     end
 
     def destroy

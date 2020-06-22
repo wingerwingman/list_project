@@ -1,23 +1,26 @@
 class ItemsController < ApplicationController
 
     def new 
-        @list = current_user.lists.find_by(id: params[:list_id])
+        # binding.pry
+        @list = current_user.lists.find_by_id(params[:list_id])
         @item = @list.items.build
     end
 
     def create 
-        @item = Item.find_or_create_by(item_params)
+        @list = current_user.lists.find_by_id(params[:list_id])
+        @item = @list.items.create(item_params)
         if  @item.save
-            redirect_to list_path(@list)
+            redirect_to lists_path(params[:id])
         else 
             render edit_list_item_path(@list)
         end
     end
 
     def destroy
+        @list = current_user.lists.find_by_id(params[:list_id])
         @item = Item.find_by(id: params[:id])
         @item.destroy
-        redirect_to lists_path(@list)
+        redirect_to lists_path(params[@list])
     end
 
     private 
