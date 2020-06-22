@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
   resources :list, only: [:new, :show, :edit, :update, :destroy]
   resources :items
-  resources :list_items, only: [:index, :new, :show, :edit, :update, :destroy]
+
 
   
 
