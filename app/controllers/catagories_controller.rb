@@ -5,11 +5,8 @@ class CatagoriesController < ApplicationController
     end
 
     def create 
-        binding.pry
-        if !category = Category.find_by(name: params[:name])
         @category = Category.find_or_create_by(params[:name])
         self.update(category)
-        end
     end
 
 
