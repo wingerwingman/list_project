@@ -5,17 +5,11 @@ class CatagoriesController < ApplicationController
     end
 
     def create 
-        @category = Category.find_or_create_by(name: name)
+        binding.pry
+        @category = Category.find_or_create_by_name(params[:name])
     end
 
-    def edit 
-        @category = Category.find_by(params[:id])
-    end
 
-    def update 
-        @category = Category.find_by(params[:id])
-        @category.update(category_params)
-    end
 
     private
 
