@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
 
     def new 
-        # binding.pry
         @list = current_user.lists.find_by_id(params[:list_id])
         @item = @list.items.build
     end
