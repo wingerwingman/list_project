@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
         @list = current_user.lists.find_by_id(params[:list_id])
         @item = @list.items.create(item_params)
         if  @item.save
-            redirect_to lists_path(@list.id)
+            redirect_to list_path(@list)
         else 
             render edit_list_item_path(@list)
         end
@@ -18,9 +18,9 @@ class ItemsController < ApplicationController
 
     def destroy
         @item = Item.find_by(id: params[:id])
-        @list = current_user.lists.find_by_id(params[:list_id])
+        @list = @item.list_id
         @item.destroy
-        redirect_to lists_path(params[@list])
+        redirect_to list_path(@list)
     end
 
     private 
