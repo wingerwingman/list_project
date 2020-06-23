@@ -5,13 +5,15 @@ Rails.application.routes.draw do
     get 'signup', to: 'devise/registrations#new'
   end
   root 'welcome#home'
+  # get 'lists', to: 'list#climbing'
   resources :lists, only: [:show, :index, :edit, :update, :destroy, :new]
   resources :lists do 
-    resources :categories, only: [:new, :update,]
+    resources :categories, only: [:new, :update]
     resources :items, only: [:show, :new, :edit, :update, :destroy, :patch, :post, :create]
   end
   resources :list, only: [:new, :show, :edit, :update, :destroy]
   resources :items, only: [:show, :new, :edit, :update, :destroy, :patch, :post]
+  
 
 
   

@@ -12,8 +12,7 @@ class ListsController < ApplicationController
 
     def index 
         @user = current_user
-        @lists = @user.lists.all
-        @long_list = Item.long_items
+        @lists = @user.lists.sort_list
     end
 
     def new
