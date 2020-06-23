@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# List Project
 
-Things you may want to cover:
+## About 
 
-* Ruby version
+#### You can use this project to create list of any category you like and add items to it and remove them.
 
-* System dependencies
+## Ruby version 2.6.1p33
 
-* Configuration
+# Setup 
 
-* Database creation
+### First clone this project to your computer. Then run bunle install. You will need to setup your own .env file with your own github authentication key and secret. For assistence on this see this page https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/. To start the server you will run "rails server". You can now either create a new user or login with your github to get started.
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

@@ -1,11 +1,7 @@
 class CatagoriesController < ApplicationController
 
-    def new 
-        @catagory = Catagory.build
-    end
-
     def create 
-        @category = Category.find_or_create_by(params[:name])
+        @category = Category.create(params[:name])
         self.update(category)
     end
 
