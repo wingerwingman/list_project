@@ -33,11 +33,15 @@ class ListsController < ApplicationController
     end
 
     def update 
-        @list = current_user.lists.find_by(id: params[:id])
-        if @list.update(list_params)
-            redirect_to list_path(@list)
-        else 
-            render 'edit'
+        if  @list == nil || current_user != List.find(params[:id]).user 
+            redirect_to root_path
+        else
+            @list = current_user.lists.find_by(id: params[:id])
+            if @list.update(list_params)
+                redirect_to list_path(@list)
+            else 
+                render 'edit'
+            end
         end
     end
 
@@ -47,9 +51,13 @@ class ListsController < ApplicationController
     end
 
     def destroy
-        @list = current_user.lists.find_by(id: params[:id])
-        @list.destroy
-        redirect_to lists_path
+        if  @list == nil || current_user != List.find(params[:id]).user 
+            redirect_to root_path
+        else
+            @list = current_user.lists.find_by(id: params[:id])
+            @list.destroy
+            redirect_to lists_path
+        end
     end
 
     private 

@@ -11,8 +11,12 @@ class ItemsController < ApplicationController
         if  @item.save
             redirect_to list_path(@list)
         else 
-            render edit_list_item_path(@list)
+            render "items/new"
         end
+    end
+
+    def show  
+        @item = Item.find_by(id: params[:id])
     end
 
     def destroy
