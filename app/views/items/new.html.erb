@@ -1,3 +1,10 @@
+<% if !@item.errors.messages.empty? %>
+    <div id="error_explanation">
+        <% @item.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end%>
+    </div>
+<% end %>
 <h3>Add Item</h3>
 
 <%= form_for [@list, @item] do |f| %>
