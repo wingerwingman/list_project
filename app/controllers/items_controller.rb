@@ -1,12 +1,14 @@
 class ItemsController < ApplicationController
+    before_action :current_list, only: [:new, :create]
+    before_action :current_item,  only: [:show, :destroy]
 
     def new 
-        @list = current_user.lists.find_by_id(params[:list_id])
+        current_list
         @item = @list.items.build
     end
 
     def create 
-        @list = current_user.lists.find_by_id(params[:list_id])
+        current_list
         @item = @list.items.create(item_params)
         if  @item.save
             redirect_to list_path(@list)
@@ -16,11 +18,11 @@ class ItemsController < ApplicationController
     end
 
     def show  
-        @item = Item.find_by(id: params[:id])
+        current_item
     end
 
     def destroy
-        @item = Item.find_by(id: params[:id])
+        current_item
         @list = @item.list_id
         @item.destroy
         redirect_to list_path(@list)
@@ -32,5 +34,12 @@ class ItemsController < ApplicationController
         params.require(:item).permit(:description, :checked_off)
     end
 
+    def current_list
+        @list = current_user.lists.find_by_id(params[:list_id])
+    end
+
+    def current_item
+        @item = Item.find_by(id: params[:id])
+    end
 
 end
