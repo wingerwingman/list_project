@@ -6,7 +6,7 @@
 
 #### You can use this project to create list of any category you like and add items to it and remove them.
 
-## Ruby version 2.6.1p33
+## Ruby version 2.6.6
 
 # Setup 
 
