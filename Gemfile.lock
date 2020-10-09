@@ -282,7 +282,7 @@ DEPENDENCIES
   omniauth-github
   pg
   pry
-  puma (~> 4.1)
+  puma
   rack-cors
   rails (~> 6.0.3, >= 6.0.3.1)
   sass-rails (>= 6)
