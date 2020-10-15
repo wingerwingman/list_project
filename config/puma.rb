@@ -16,14 +16,14 @@ pidfile "/var/run/puma/my_app.sock"
 stdout_redirect '/var/log/puma/puma.log', '/var/log/puma/puma.log', true
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 #
-# port        ENV.fetch("PORT") { 5432 }
+port        ENV.fetch("PORT") { 3000 }
 
 # Specifies the `environment` that Puma will run in.
 #
 environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Specifies the `pidfile` that Puma will use.
-# pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
+pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked web server processes. If using threads and workers together
@@ -38,7 +38,7 @@ workers ENV.fetch("WEB_CONCURRENCY") { 2 }
 # before forking the application. This takes advantage of Copy On Write
 # process behavior so workers use less memory.
 #
-# preload_app!
+preload_app!
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
