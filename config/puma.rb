@@ -12,19 +12,19 @@ directory '/var/app/ondeck'
 threads 8, 32
 workers %x(grep -c processor /proc/cpuinfo)
 bind "unix:///var/run/puma/my_app.sock"
-# pidfile "/var/run/puma/my_app.sock"
+pidfile "/var/run/puma/my_app.sock"
 stdout_redirect '/var/log/puma/puma.log', '/var/log/puma/puma.log', true
 daemonize false
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 #
-port        ENV.fetch("PORT") { 5432 }
+# port        ENV.fetch("PORT") { 5432 }
 
 # Specifies the `environment` that Puma will run in.
 #
 environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Specifies the `pidfile` that Puma will use.
-pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
+# pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked web server processes. If using threads and workers together
