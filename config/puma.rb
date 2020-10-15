@@ -9,8 +9,6 @@ min_threads_count = ENV.fetch("RAILS_MIN_THREADS") { max_threads_count }
 threads min_threads_count, max_threads_count
 
 directory '/var/app/ondeck'
-threads 8, 32
-workers %x(grep -c processor /proc/cpuinfo)
 bind "unix:///var/run/puma/my_app.sock"
 pidfile "/var/run/puma/my_app.sock"
 stdout_redirect '/var/log/puma/puma.log', '/var/log/puma/puma.log', true
