@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.1'
+ruby '2.6.6'
 gem 'omniauth-github'
 gem 'rack-cors'
 gem 'bootstrap', '~> 4.3.1'

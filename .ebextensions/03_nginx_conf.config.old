@@ -22,7 +22,7 @@ container_commands:
           access_log /var/log/nginx/access.log;
           error_log /var/log/nginx/error.log;
 
-          server_name ListPreject-env.eba-9wdv3dq4.us-east-2.elasticbeanstalk.com
+          server_name http://listproject.eba-zprtyfsh.us-east-2.elasticbeanstalk.com/
 
           # prevents 502 bad gateway error
           large_client_header_buffers 8 32k;
