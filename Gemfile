@@ -10,11 +10,15 @@ gem 'jquery-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 # Use sqlite3 as the database for Active Record
-gem 'pg'
-gem "passenger"
+group :production do
+  gem 'pg'
+end
+# gem "passenger"
 # gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
-gem 'puma'
+group :development do
+  gem 'puma'
+end
 # Use SCSS for stylesheets
 gem 'sass-rails'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
