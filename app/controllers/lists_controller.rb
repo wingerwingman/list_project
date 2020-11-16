@@ -55,7 +55,7 @@ class ListsController < ApplicationController
             redirect_to root_path
         else
             @list = current_user.lists.find_by(id: params[:id])
-            @list.destroy!
+            @list.destroy
             redirect_to lists_path
         end
     end
