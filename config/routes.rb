@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'signup', to: 'devise/registrations#new'
   end
   root 'welcome#home'
+  get '/lists:id' => 'lists#destroy'
   # get 'lists', to: 'list#climbing'
   resources :lists, only: [:show, :index, :edit, :update, :destroy, :new]
   resources :lists do 
