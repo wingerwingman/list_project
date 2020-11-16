@@ -1,24 +1,15 @@
 class ListsController < ApplicationController
     before_action :require_permission, only: :show 
-
-    def require_permission
-        if current_user != List.find(params[:id]).user
-            redirect_to lists_path
-        end
-        rescue ActiveRecord::RecordNotFound
-        redirect_to root_url, :flash => { :error => "Record not found." }
-    end
-
-
+    
     def index 
         @user = current_user
         @lists = @user.lists.sort_list
     end
-
+    
     def new
         @list = current_user.lists.build
     end
-
+    
     def create 
         @list = current_user.lists.build(list_params)
         if @list.save
@@ -27,11 +18,11 @@ class ListsController < ApplicationController
             render 'new'
         end
     end
-
+    
     def edit 
         @list = current_user.lists.find_by(id: params[:id])
     end
-
+    
     def update 
         if  @list == nil || current_user != List.find(params[:id]).user 
             redirect_to root_path
@@ -44,12 +35,12 @@ class ListsController < ApplicationController
             end
         end
     end
-
+    
     def show 
         @list = current_user.lists.find_by_id(params[:id])
         @items = @list.items
     end
-
+    
     def destroy
         if  @list == nil || current_user != List.find(params[:id]).user 
             redirect_to root_path
@@ -59,9 +50,17 @@ class ListsController < ApplicationController
             redirect_to lists_path
         end
     end
-
+    
     private 
 
+    def require_permission
+        if current_user != List.find(params[:id]).user
+            redirect_to lists_path
+        end
+        rescue ActiveRecord::RecordNotFound
+        redirect_to root_url, :flash => { :error => "Record not found." }
+    end
+    
     def list_params 
         params.require(:list).permit(:user_id, :name, :category_id, :description, category_attributes: [
             :name
