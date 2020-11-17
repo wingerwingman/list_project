@@ -9,7 +9,9 @@ require("@rails/activestorage").start()
 require("channels")
 //= require rails-ujs
 //= require jquery
-//= require jquery_ujs 
+//=require jquery.min
+//=require jquery_ujs
+//=require general
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
