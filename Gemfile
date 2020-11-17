@@ -12,6 +12,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 # Use sqlite3 as the database for Active Record
 group :production do
   gem 'pg'
+  gem 'sprockets-rails', :require => 'sprockets/railtie'
 end
 # gem "passenger"
 # gem 'sqlite3', '~> 1.4'
