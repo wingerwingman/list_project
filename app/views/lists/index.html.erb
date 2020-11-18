@@ -10,7 +10,7 @@
     <%= link_to "#{l.name}", list_path(l) %>
     <p>Category: <%= l.category.name %></p>
     <p>Description: <%= l.description %></p>
-    <%= link_to "Delete List", l.id, method: :delete %>
+    <%= link_to "Delete List", l, method: :delete %>
     </p><br><br>
     </tr>
 </table>

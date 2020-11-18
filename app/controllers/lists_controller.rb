@@ -42,13 +42,13 @@ class ListsController < ApplicationController
     end
     
     def destroy
-        if  @list == nil || current_user != List.find(params[:id]).user 
-            redirect_to root_path
-        else
+        # if  @list == nil || current_user != List.find(params[:id]).user 
+        #     redirect_to root_path
+        # else
             @list = current_user.lists.find_by(id: params[:id])
             @list.destroy
             redirect_to lists_path
-        end
+        # end
     end
     
     private 
